@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className="bg-white shadow-lg rounded-full border border-gray-800">
       <nav className="flex items-center justify-between px-4 py-1 rounded-full">
-        <div className="text-gray-800 text-lg font-bold">Location Master</div>
+      <Link to="/" className="hover:text-gray-600 transition duration-300"><div className="text-gray-800 text-lg font-bold">Location Master</div></Link>
         <div className="hidden md:flex space-x-4 text-gray-800">
           <Link to="/" className="hover:text-gray-600 transition duration-300">Home</Link>
           <Link to="/ShowLocations" className="hover:text-gray-600 transition duration-300">View Locations</Link>

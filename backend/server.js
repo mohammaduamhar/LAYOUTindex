@@ -7,14 +7,15 @@ import deviceRouter from "./routes/devicesRoutes.js";
 import router from "./routes/locationRoutes.js";
 import cors from "cors";
 import multer from "multer";
-import path from "path";
+
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads/");
+    cb(null, "./backend/uploads/");
   },
   filename: function (req, file, cb) {
-   return  cb(null, `${Date.now()}_${file.originalname}`);
+   return  cb(null,file.originalname);
   },
 });
 
@@ -36,7 +37,7 @@ app.use(cors());
 app.use(router);
 app.use(deviceRouter);
 
-app.get('/upload',(req,res) => {
+app.get('/getImage',(req,res) => {
   res.render("Image upload")
 });
 

@@ -34,15 +34,20 @@ const RegisterDevice = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-    reader.onload = (event) => {
-      setFormData({ ...formData, image: event.target.result });
-    };
+    const fileName = file.name;
+    setFormData({ ...formData, image: fileName });
+  
 
     const upload =() =>{
       const file = e.target.files[0];
       const formData = new FormData();
       formData.append('file', file);
-      axios.post('http://localhost:8000/upload',formData)
+      axios.post('http://localhost:8000/upload',formData ,
+      {
+        headers: {
+          'Content-Type':'multipart/form-data'
+        }
+      })
         .then(res =>{})
         .catch(err => console.log(err));
   
@@ -90,11 +95,6 @@ const RegisterDevice = () => {
         <input type="file" accept="image/*" name="image" onChange={handleImageChange} className="block mt-1 p-2 border rounded-md focus:outline-none" />
         {errors.image && <span className="text-red-500">{errors.image}</span>}
       </label>
-      {formData.image && (
-        <div className="flex justify-center">
-          <img src={formData.image} alt="Uploaded" className="max-w-full" />
-        </div>
-      )}
       <label className="block mb-4">
         Status:
         <select name="status" value={formData.status} onChange={handleChange} className="block w-full mt-1 p-2 border rounded-md focus:outline-none">

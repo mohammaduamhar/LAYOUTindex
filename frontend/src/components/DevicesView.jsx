@@ -17,6 +17,8 @@ function DevicesView() {
         }
     }
 
+   
+
     useEffect(() => {
         const fetchDevices = async () => {
             try {
@@ -30,6 +32,7 @@ function DevicesView() {
           fetchDevices();
     },[])
 
+
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-4 text-center">Associated Devices</h1> {/* Add this line for the heading */}
@@ -40,27 +43,28 @@ function DevicesView() {
               <div className="top" style={{
                 height: '60%',
                 width: '100%',
-                backgroundSize: 'cover'
+                backgroundSize: 'cover',
               }}>
-               
+
+{/* The correct method is to send a request to the backend's 'uploads' folder, read the files, convert them to BASE64 URLs, and send them with the response body. */}
+
+
+<img src={`http://localhost:8000/backend/uploads/${device.image}`} alt="Device" style={{ width: '100%', height: '100%' }} />
+                {device.image}
               </div>
               <div className="bottom">
                 <div className="left">
                   <div className="details">
-                    
+                    {/* Display decoded image here */}
                   </div>
                   <button className="btn flex flex-row bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg shadow-md" onClick={() => deleteDevice(device._id)}>Delete</button>
-
                 </div>
               </div>
             </div>
             <div className="inside">
               <div className="icon"><i className="material-icons">SerialNumber:{device.serialNumber}</i>
               <i className="material-icons">Type :{device.type}</i>
-            
               <i className="material-icons">Status :{device.status}</i>
-             
-              
               </div>
             </div>
           </div>

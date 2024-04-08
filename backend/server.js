@@ -7,6 +7,7 @@ import deviceRouter from "./routes/devicesRoutes.js";
 import router from "./routes/locationRoutes.js";
 import cors from "cors";
 import multer from "multer";
+import Image from "./models/imageModel.js"
 
 
 
@@ -37,10 +38,10 @@ app.use(cors());
 app.use(router);
 app.use(deviceRouter);
 
-app.get('/getImage',(req,res) => {
-  res.render("Image upload")
-});
-
+app.get('/getImage',async (req,res)=>{
+  const allData = await Image.find()
+  res.json(allData)
+})
 app.post('/upload', upload.single('file') ,(req,res) => {
   console.log(req.body);
   console.log(req.file);

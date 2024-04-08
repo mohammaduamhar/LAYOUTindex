@@ -29,9 +29,9 @@ For the frontend folder:
     "tailwindcss": "^3.4.3"
 }
 
-After successfully installing, we can run the server and the Vite app simultaneously using npm run dev
+After successfully installing, we can run the server and the Vite app simultaneously using **"npm run dev"**
 
-home page 
+**home page**
 
 We can see the location details when hovering over the 1/4 circle.
 

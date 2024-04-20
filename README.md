@@ -1,4 +1,5 @@
-﻿# LAYOUTindex
+﻿# Location Manager
+ 
 For the root directory:
 
 "dependencies": {
